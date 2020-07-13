@@ -12,7 +12,7 @@ export class UserListComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.getUsers()
-      .subscribe(res => console.log(res[0].address))
+      .subscribe(res => console.log(res[0].address));
   }
 
 }
