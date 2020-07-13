@@ -1,5 +1,5 @@
-import { Address } from './address.model'
-import { Insurance } from './insurance.model'
+import { Insurance } from './insurance.model';
+import { Address } from './address.model';
 
 export interface User {
   id: number;
@@ -11,7 +11,7 @@ export interface User {
   birth_date?: string;
   id_document?: string;
   address?: Address;
-  health_insurance?: Insurance[];
+  insurance?: Insurance[];
   colegiate_number: string;
   profesional_type?: string;
 }
