@@ -18,4 +18,8 @@ export class UserService{
   getUserById(id: number): Observable<User>{
     return this.httpClient.get<User>(this.BASIC_URL + id);
   }
+
+  createUser(user: User): void {
+    this.httpClient.post(this.BASIC_URL, user).subscribe();
+  }
 }
