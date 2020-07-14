@@ -1,17 +1,26 @@
-import { Insurance } from './insurance.model';
-import { Address } from './address.model';
+import { Insurance } from '../interfaces/insurance.type';
+import { Address } from '../interfaces/address.type';
+
+type profesionalType =  'Medico' | 'Enfermero' | 'Administrativo'
 
 export interface User {
-  id: number;
-  nhc: string;
+  _id: number;
+
   name: string;
-  first_surname: string;
-  second_surname?: string;
+  firstSurname: string;
+  secondSurname?: string;
   gender?: string;
-  birth_date?: string;
-  id_document?: string;
+  birthDate?: string;
+  idDocument?: string;
   address?: Address;
+}
+
+export interface Patient extends User{
+  nhc?: string; 
   insurance?: Insurance[];
-  colegiate_number: string;
-  profesional_type?: string;
+}
+
+export interface Profesional extends User{
+  colegiateNumber?: string;
+  profesionalType?: profesionalType;
 }
