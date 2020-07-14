@@ -22,4 +22,8 @@ export class UserService{
   createUser(user: User): void {
     this.httpClient.post(this.BASIC_URL, user).subscribe();
   }
+
+  deleteUser(id: number): void{
+    this.httpClient.delete(this.BASIC_URL + id).subscribe()
+  }
 }

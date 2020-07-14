@@ -1,10 +1,11 @@
 import { Insurance } from '../interfaces/insurance.type';
 import { Address } from '../interfaces/address.type';
 
-type profesionalType =  'Medico' | 'Enfermero' | 'Administrativo'
+type professionalType =  'Medico' | 'Enfermero' | 'Administrativo'
 
 export interface User {
-  _id: number;
+  //? para que se autogenere en el post, pero siempre está
+  id?: number; 
 
   name: string;
   firstSurname: string;
@@ -16,11 +17,11 @@ export interface User {
 }
 
 export interface Patient extends User{
-  nhc?: string; 
+  nhc: string; 
   insurance?: Insurance[];
 }
 
-export interface Profesional extends User{
-  colegiateNumber?: string;
-  profesionalType?: profesionalType;
+export interface Professional extends User{
+  colegiateNumber: string;
+  profesionalType?: professionalType;
 }

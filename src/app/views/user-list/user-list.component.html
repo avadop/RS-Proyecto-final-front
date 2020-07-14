@@ -1,1 +1,15 @@
-<p>user-list works!</p>
+<div id="users">
+  <div class="user" *ngFor="let user of users">
+    <div class="information">
+      <p *ngIf="isPatient(user)">NHC: {{user.nhc}}</p> 
+      <p *ngIf="isProfessional(user)">Numero colegiado: {{user.colegiateNumber}}</p>
+      <p>Name: {{user.name}}</p>
+      <p>Surname: {{user.firstSurname}} {{user.secondSurname}}</p>
+    </div>
+    <div class="options">
+      <button routerLink="/users/{{user.id}}">Detalles</button>
+      <button>Editar</button>
+      <button (click)="deleteUser(user.id)">Eliminar</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,58 @@
+{
+  "users": [
+    {
+      "id": 3,
+      "nhc": "1234",
+      "name": "233",
+      "firstSurname": "444"
+    },
+    {
+      "id": 4,
+      "nhc": "222",
+      "name": "2222",
+      "firstSurname": "2222"
+    },
+    {
+      "nhc": "000012",
+      "name": "Name",
+      "firstSurname": "Surname",
+      "id": 5
+    },
+    {
+      "colegiateNumber": "000012",
+      "name": "Name",
+      "firstSurname": "Surname",
+      "id": 6
+    },
+    {
+      "colegiateNumber": "000012",
+      "name": "Name",
+      "firstSurname": "Surname",
+      "id": 7
+    },
+    {
+      "colegiateNumber": "000012",
+      "name": "Name",
+      "firstSurname": "Surname",
+      "id": 9
+    },
+    {
+      "colegiateNumber": "000012",
+      "name": "Name",
+      "firstSurname": "Surname",
+      "id": 10
+    },
+    {
+      "nhc": "000012",
+      "name": "Name",
+      "firstSurname": "Surname",
+      "id": 11
+    },
+    {
+      "nhc": "000012",
+      "name": "Name",
+      "firstSurname": "Surname",
+      "id": 12
+    }
+  ]
+}

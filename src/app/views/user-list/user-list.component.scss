@@ -1,0 +1,10 @@
+#users{
+  display: flex;
+  flex-wrap: wrap;
+  .user{
+    padding: 1em;
+    margin: 0.5em;
+    border: 1px solid black;
+    cursor: pointer;
+  }
+}
