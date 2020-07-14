@@ -8,6 +8,12 @@ import { Patient, Professional} from 'src/app/models/user.model'
   styleUrls: ['./new-user.component.scss']
 })
 export class NewUserComponent implements OnInit {
+  nhc: string;
+  colegiateNumber: string;
+  name: string;
+  surname:string;
+
+  isPatient: boolean = true;
 
   constructor(private userService: UserService) { }
 
@@ -16,9 +22,9 @@ export class NewUserComponent implements OnInit {
 
   createPatient():void{
     let patient: Patient = {
-      nhc: '000012',
-      name: 'Name',
-      firstSurname: 'Surname'
+      nhc: this.nhc,
+      name: this.name,
+      firstSurname: this.surname
     }
 
     this.userService.createUser(patient);
@@ -26,12 +32,16 @@ export class NewUserComponent implements OnInit {
 
   createProfessional():void{
     let professional: Professional = {
-      colegiateNumber: '000012',
-      name: 'Name',
-      firstSurname: 'Surname'
+      colegiateNumber: this.colegiateNumber,
+      name: this.name,
+      firstSurname: this.surname
     }
 
     this.userService.createUser(professional);
+  }
+
+  switchUser(): void {
+    this.isPatient = !this.isPatient;
   }
 
 }

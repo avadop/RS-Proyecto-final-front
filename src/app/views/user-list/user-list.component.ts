@@ -13,13 +13,6 @@ export class UserListComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    // let user: Patient = {
-    //   nhc: '01293123',
-    //   name: 'asdasdas',
-    //   firstSurname: 'surname'
-    // }
-    //Check tipo de chisme para mostrarlo
-    // console.log('collegiate_number' in user)
     this.userService.getUsers()
       .subscribe(res => this.users = res);
   }

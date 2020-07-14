@@ -1,4 +1,24 @@
-<p>new-user works!</p>
-<button (click)="createPatient()">Patient</button>
+<div id="new-user">
 
-<button (click)="createProfessional()">Prof</button>
+  <div *ngIf="isPatient">
+    <span (click)="switchUser()">Nuevo profesional</span>
+    <p>NHC</p>
+    <input type="text" [(ngModel)]="nhc">
+  </div>
+
+  <div *ngIf="!isPatient">
+    <span (click)="switchUser()">Nuevo paciente</span>
+    <p>Numero colegiado</p>
+    <input type="text" [(ngModel)]="colegiateNumber">
+  </div>
+
+  <p>Nombre</p>
+  <input type="text" [(ngModel)]="name">
+  <p>Apellido</p>
+  <input type="text" [(ngModel)]="surname">
+  
+  <button *ngIf="isPatient" (click)="createPatient()">Crear</button>
+
+  <button *ngIf="!isPatient" (click)="createProfessional()">Crear</button>
+
+</div>
