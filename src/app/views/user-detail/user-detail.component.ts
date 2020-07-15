@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-// import { Subscription } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { User } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user.service';
@@ -13,13 +12,27 @@ import { UserService } from 'src/app/services/user.service';
 export class UserDetailComponent implements OnInit {
   user: User;
 
-  constructor(private userService: UserService, 
-    private route: ActivatedRoute) { }
+  constructor(
+    private userService: UserService, 
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => 
+    this.route.params.subscribe(params => {
       this.userService.getUserById(params.user_id)
-        .subscribe(res => this.user = res));
+        .subscribe(res => {
+          this.user = res
+        }, error => {
+          if(error.status === 404)
+            this.router.navigate(['Error404'], {relativeTo: this.route})
+        })
+      // if(!isNaN(+params.user_id)){
+      //   this.userService.getUserById(params.user_id)
+      //   .subscribe(res => this.user = res)
+      // } else{
+      //   this.router.navigate(['Error404'], {relativeTo: this.route})
+      // }
+    });
   }
 
 }
