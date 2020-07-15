@@ -29,5 +29,17 @@ export class UserListComponent implements OnInit {
     this.userService.deleteUser(id).subscribe();
     window.location.reload();
   }
+  
+  deleteAllDoctors(): void{
+
+    for(let i = 0; i < this.users.length; i++){
+
+      if(this.users[i].profesionalType !== undefined && this.users[i].profesionalType === 'Médico')
+
+        this.userService.deleteUser(this.users[i].id).subscribe();
+    }
+
+    window.location.reload();
+  }
 
 }

@@ -1,7 +1,7 @@
 import { Insurance } from '../interfaces/insurance.type';
 import { Address } from '../interfaces/address.type';
 
-type professionalType =  'Medico' | 'Enfermero' | 'Administrativo'
+type professionalType =  '' | 'Médico' | 'Enfermero' | 'Administrativo'
 
 export interface User {
   id?: number; 
