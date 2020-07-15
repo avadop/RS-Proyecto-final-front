@@ -35,7 +35,9 @@ export class NewUserComponent implements OnInit {
 
   createUser(userForm: NgForm):void{
     this.userService.createUser(userForm.value).subscribe();
-    this.router.navigateByUrl('/users')
+    setTimeout( () => {
+      this.router.navigateByUrl('/users')
+    }, 100)
   }
 
   switchIsPatient(value: boolean): void {
