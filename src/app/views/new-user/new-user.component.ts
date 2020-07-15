@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
-import { Patient, Professional} from 'src/app/models/user.model'
+import { NgForm } from '@angular/forms';
+import { Insurance } from 'src/app/interfaces/insurance.type';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-user',
@@ -8,40 +10,36 @@ import { Patient, Professional} from 'src/app/models/user.model'
   styleUrls: ['./new-user.component.scss']
 })
 export class NewUserComponent implements OnInit {
-  nhc: string;
-  colegiateNumber: string;
-  name: string;
-  surname:string;
+  professionalType: Array<string> = ['','Medico','Enfermero','Administrativo'];
+
+  insuranceType: Array<string> = ['', 'Salud', 'Dental', 'Familiar']
+
+  insuranceList: Array<Insurance> = [];
 
   isPatient: boolean = true;
 
-  constructor(private userService: UserService) { }
+  constructor(
+    private userService: UserService,
+    private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  createPatient():void{
-    let patient: Patient = {
-      nhc: this.nhc,
-      name: this.name,
-      firstSurname: this.surname
-    }
-
-    this.userService.createUser(patient);
+  addInsurance() {
+    this.insuranceList.push({
+      cardNumber: '',
+      name: '',
+      insuranceType: ''
+    })
   }
 
-  createProfessional():void{
-    let professional: Professional = {
-      colegiateNumber: this.colegiateNumber,
-      name: this.name,
-      firstSurname: this.surname
-    }
-
-    this.userService.createUser(professional);
+  createUser(userForm: NgForm):void{
+    this.userService.createUser(userForm.value).subscribe();
+    this.router.navigateByUrl('/users')
   }
 
-  switchUser(): void {
-    this.isPatient = !this.isPatient;
+  switchIsPatient(value: boolean): void {
+    this.isPatient = value;
   }
 
 }

@@ -1,24 +1,66 @@
 <div id="new-user">
+  <button (click)="switchIsPatient(true)">Nuevo paciente</button>
+  <button (click)="switchIsPatient(false)">Nuevo profesional</button>
 
-  <div *ngIf="isPatient">
-    <span (click)="switchUser()">Nuevo profesional</span>
-    <p>NHC</p>
-    <input type="text" [(ngModel)]="nhc">
-  </div>
-
-  <div *ngIf="!isPatient">
-    <span (click)="switchUser()">Nuevo paciente</span>
-    <p>Numero colegiado</p>
-    <input type="text" [(ngModel)]="colegiateNumber">
-  </div>
-
-  <p>Nombre</p>
-  <input type="text" [(ngModel)]="name">
-  <p>Apellido</p>
-  <input type="text" [(ngModel)]="surname">
+  <form #userForm="ngForm" (ngSubmit)="createUser(userForm)">
+    <div *ngIf="isPatient">
+      <p>NHC</p>
+      <input  ngModel name="nhc" required>
+    </div>
   
-  <button *ngIf="isPatient" (click)="createPatient()">Crear</button>
+    <div *ngIf="!isPatient">
+      <p>Número colegiado</p>
+      <input ngModel name="membershipNumber" required>
+      <p>Tipo de profesional</p>
+      <select ngModel name="profesionalType">
+        <option *ngFor="let option of professionalType">{{option}}</option>
+      </select>
+    </div>
 
-  <button *ngIf="!isPatient" (click)="createProfessional()">Crear</button>
+    <p>Nombre </p>
+    <input  ngModel name="name" required>
+    <p>Primer Apellido</p>
+    <input  ngModel name="firstSurname" required>
+    <p>Segundo Apellido</p>
+    <input  ngModel name="secondSurname" >
+
+    <p>Género</p>
+    <input  ngModel name="gender">
+    <p>Fecha de nacimiento</p>
+    <input type="date" ngModel name="birthDate">
+
+    <p>NIF o número de pasaporte</p>
+    <input  ngModel name="idDocument">
+
+    <p>Dirección</p>
+    <form ngModelGroup="address">
+      <p>Calle</p>
+      <input  ngModel name="street">
+      <p>Número</p>
+      <input  ngModel name="number">
+      <p>Puerta</p>
+      <input  ngModel name="door">
+      <p>Código postal</p>
+      <input  ngModel name="postalCode">
+      <p>Ciudad</p>
+      <input  ngModel name="city">
+    </form>
+
+    <div *ngIf="isPatient">
+      <button type="button" (click)="addInsurance()">Añadir Seguro médico</button>
+      <div class="insurance" ngModelGroup="insuranceList" *ngFor="let insurance of insuranceList">
+        <p>Nombre insurance</p>
+        <input [(ngModel)]="insurance.name" name="name" >
+        <p>Número tarjeta</p>
+        <input [(ngModel)]="insurance.cardNumber" name="cardNumber" >
+        <p>Tipo de seguro</p>
+        <select [(ngModel)]="insurance.insuranceType" name="insuranceType">
+          <option *ngFor="let option of insuranceType">{{option}}</option>
+        </select>
+      </div>
+    </div>
+    
+    <button type="submit">Crear</button>
+  </form>
 
 </div>
