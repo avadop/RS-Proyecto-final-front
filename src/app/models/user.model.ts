@@ -9,7 +9,7 @@ export interface User {
   nhc: string; 
   insurance?: Insurance[];
 
-  colegiateNumber: string;
+  membershipNumber: string;
   profesionalType?: professionalType;
 
   name: string;
