@@ -12,7 +12,8 @@ const routes: Routes = [
   { path: 'users', component: UserListComponent },
   { path: 'users/new', component:NewUserComponent },
   { path: 'users/:user_id', component:UserDetailComponent },
-  { path: 'users/:user_id/edit', component:EditUserComponent }
+  { path: 'users/:user_id/edit', component:EditUserComponent },
+  { path: '**', component:Error404Component }
 ];
 
 @NgModule({
