@@ -6,10 +6,10 @@ type professionalType =  'Medico' | 'Enfermero' | 'Administrativo'
 export interface User {
   id?: number; 
 
-  nhc: string; 
-  insurance?: Insurance[];
+  nhc?: string; 
+  insuranceList?: Insurance[];
 
-  membershipNumber: string;
+  membershipNumber?: string;
   profesionalType?: professionalType;
 
   name: string;
