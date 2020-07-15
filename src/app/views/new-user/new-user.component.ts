@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./new-user.component.scss']
 })
 export class NewUserComponent implements OnInit {
-  professionalType: Array<string> = ['','Medico','Enfermero','Administrativo'];
+  professionalType: Array<string> = ['','Médico','Enfermero','Administrativo'];
 
   insuranceType: Array<string> = ['', 'Salud', 'Dental', 'Familiar']
 

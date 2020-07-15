@@ -22,11 +22,12 @@ export class UserListComponent implements OnInit {
   }
 
   isProfessional(user: User): boolean{
-    return 'colegiateNumber' in user;
+    return 'membershipNumber' in user;
   }
 
   deleteUser(id: number): void {
-    this.userService.deleteUser(id);
+    this.userService.deleteUser(id).subscribe();
+    window.location.reload();
   }
 
 }

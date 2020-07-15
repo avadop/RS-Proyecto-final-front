@@ -1,11 +1,21 @@
 <div id="users">
   <div class="user" *ngFor="let user of users">
     <div class="information">
-      <p *ngIf="isPatient(user)">NHC: {{user.nhc}}</p> 
-      <p *ngIf="isProfessional(user)">Numero colegiado: {{user.colegiateNumber}}</p>
-      <p>Name: {{user.name}}</p>
-      <p>Surname: {{user.firstSurname}} {{user.secondSurname}}</p>
+
+      <div *ngIf="isPatient(user)">
+        <p>Paciente</p>
+        <p>NHC: {{user.nhc}}</p> 
+      </div>
+
+      <div *ngIf="isProfessional(user)">
+        <p>Profesional {{user.profesionalType}}</p>
+        <p>Numero colegiado: {{user.membershipNumber}}</p>
+      </div>
+      
+      <p>{{user.name}} {{user.firstSurname}} {{user.secondSurname}}</p>
+
     </div>
+
     <div class="options">
       <button routerLink="/users/{{user.id}}">Detalles</button>
       <button>Editar</button>
