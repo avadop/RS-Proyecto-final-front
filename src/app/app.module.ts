@@ -15,10 +15,10 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MainComponent } from './components/main/main.component';
 
-import { UserListComponent } from './views/user/user-list/user-list.component';
-import { UserDetailComponent } from './views/user/user-detail/user-detail.component';
-import { NewUserComponent } from './views/user/new-user/new-user.component';
-import { EditUserComponent } from './views/user/edit-user/edit-user.component';
+import { UserListComponent } from './views/user-list/user-list.component';
+import { UserDetailComponent } from './views/user-detail/user-detail.component';
+import { NewUserComponent } from './views/new-user/new-user.component';
+import { EditUserComponent } from './views/edit-user/edit-user.component';
 import { Error404Component } from './views/error404/error404.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ExampleMaterialComponent } from './example-material/example-material.component';

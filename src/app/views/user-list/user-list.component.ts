@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user.model'
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-user-list',
@@ -10,7 +11,9 @@ import { User } from 'src/app/models/user.model'
 export class UserListComponent implements OnInit {
   users: User[];
 
-  constructor(private userService: UserService) { }
+  constructor(
+    private userService: UserService,
+    private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.userService.getUsers()
@@ -42,4 +45,20 @@ export class UserListComponent implements OnInit {
     window.location.reload();
   }
 
+  // openDeleteUserDialog() {
+  //   const dialogRef = this.dialog.open(DeleteUserDialog)
+  // }
+
 }
+
+// @Component({
+//   selector: 'delete-user-dialog',
+//   templateUrl: 'dialogs/delete-user-dialog.html',
+// })
+// export class DeleteUserDialog {}
+
+// @Component({
+//   selector: 'dialog-content-example-dialog',
+//   templateUrl: 'dialog-content-example-dialog.html',
+// })
+// export class DialogContentExampleDialog {}
