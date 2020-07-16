@@ -1,4 +1,46 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+// $final-proyect-rs-primary: mat-palette($mat-teal, A200, A100, A400);
+$final-proyect-rs-primary: mat-palette($mat-cyan, 200, 500, 600);
+$final-proyect-rs-accent: mat-palette($mat-amber, A200);
+
+// The warn palette is optional (defaults to red).
+$final-proyect-rs-warn: mat-palette($mat-red);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$final-proyect-rs-theme: mat-light-theme((
+  color: (
+    primary: $final-proyect-rs-primary,
+    accent: $final-proyect-rs-accent,
+    warn: $final-proyect-rs-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($final-proyect-rs-theme);
+
 /* You can add global styles to this file, and also import other style files */
-body{
-  margin:0;
-}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+// #8AC6D1#FFE3ED#FFFDF9#beebe9
+// #FFC55C#E7A4E4#B2DFFB#d3f4ff
+// #FFE3ED#FFFDF9#BEEBE9#9be3de
+// 3e64ff 5edfff b2fcff ecfcff
+// e36387 f2aaaa  a6dcef ddf3f5
