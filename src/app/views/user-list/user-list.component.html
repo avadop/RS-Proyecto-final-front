@@ -1,5 +1,5 @@
   
-  <button mat-button id="delete-doctors-btn" (click)="deleteAllDoctors()">Borrar médicos</button>
+  <button mat-raised-button id="delete-doctors-btn" (click)="deleteAllDoctors()">Borrar médicos</button>
 
 <div id="users">
 
@@ -20,9 +20,9 @@
       </mat-card-content>
 
     <mat-card-actions class="options">
-      <button mat-button routerLink="/users/{{user.id}}">Detalles</button>
-      <button mat-button routerLink="/users/{{user.id}}/edit">Editar</button>
-      <button mat-button (click)="deleteUser(user.id)">Eliminar</button>
+      <button mat-raised-button routerLink="/users/{{user.id}}">Detalles</button>
+      <button mat-raised-button routerLink="/users/{{user.id}}/edit">Editar</button>
+      <button mat-raised-button (click)="deleteUser(user.id)">Eliminar</button>
     </mat-card-actions>
   </mat-card>
 

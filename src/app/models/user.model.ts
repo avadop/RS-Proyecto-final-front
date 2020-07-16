@@ -10,7 +10,7 @@ export interface User {
   insuranceList?: Insurance[];
 
   membershipNumber?: string;
-  profesionalType?: professionalType;
+  professionalType?: professionalType;
 
   name: string;
   firstSurname: string;

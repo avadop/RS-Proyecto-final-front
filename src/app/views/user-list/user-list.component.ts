@@ -37,7 +37,7 @@ export class UserListComponent implements OnInit {
 
     for(let i = 0; i < this.users.length; i++){
 
-      if(this.users[i].profesionalType !== undefined && this.users[i].profesionalType === 'Médico')
+      if(this.users[i].professionalType !== undefined && this.users[i].professionalType === 'Médico')
 
         this.userService.deleteUser(this.users[i].id).subscribe();
     }
