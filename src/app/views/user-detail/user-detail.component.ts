@@ -11,6 +11,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class UserDetailComponent implements OnInit {
   user: User;
+  isPatient: boolean = false;
 
   constructor(
     private userService: UserService, 
@@ -22,16 +23,11 @@ export class UserDetailComponent implements OnInit {
       this.userService.getUserById(params.user_id)
         .subscribe(res => {
           this.user = res
+          if('nhc' in this.user) this.isPatient = true;
         }, error => {
           if(error.status === 404)
             this.router.navigate(['Error404'], {relativeTo: this.route})
         })
-      // if(!isNaN(+params.user_id)){
-      //   this.userService.getUserById(params.user_id)
-      //   .subscribe(res => this.user = res)
-      // } else{
-      //   this.router.navigate(['Error404'], {relativeTo: this.route})
-      // }
     });
   }
 

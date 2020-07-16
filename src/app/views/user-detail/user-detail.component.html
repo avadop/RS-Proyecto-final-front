@@ -1,4 +1,36 @@
-<p>user-detail works!</p>
-<div id="user" *ngIf="user">
-  {{user.name}} {{user.firstSurname}} {{user.secondSurname}}
-</div>
+<mat-card id="user-detail" *ngIf="user">
+  <mat-tab-group dynamicHeight>
+
+    <mat-tab label="Datos personales">
+      <div class="tab-content">
+        <p *ngIf="isPatient"><span class="field-title">NHC: </span>{{user.nhc}}</p>
+        <p><span class="field-title">Nombre: </span>{{user.name}}</p>
+        <p><span class="field-title">Primer apellido: </span>{{user.firstSurname}}</p>
+        <p><span class="field-title">Segundo apellido: </span> {{user.secondSurname}}</p>
+        <p><span class="field-title">Género: </span> {{user.gender}}</p>
+        <p><span class="field-title">Fecha de nacimiento: </span>{{user.birthDate}}</p>
+        <p><span class="field-title">NIF o Pasaporte</span>{{user.idDocument}}</p>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Dirección">
+      <div class="tab-content">
+        <p><span class="field-title">Calle: </span>{{user.address.street}}</p>
+        <p><span class="field-title">Número: </span>{{user.address.number}}</p>
+        <p><span class="field-title">Puerta: </span> {{user.address.door}}</p>
+        <p><span class="field-title">Código postal: </span> {{user.address.postalCode}}</p>
+        <p><span class="field-title">Ciudad: </span>{{user.address.city}}</p>
+      </div>
+    </mat-tab>
+
+    <mat-tab *ngIf="isPatient" label="Aseguradoras">
+      <div class="tab-content">
+        <mat-card class="insurance" *ngFor="let insurance of user.insuranceList">
+          <p><span class="field-title">Nombre: </span> {{insurance.name}}</p>
+          <p><span class="field-title">Número tarjeta: </span> {{insurance.cardNumber}}</p>
+          <p><span class="field-title">Tipo de aseguradora: </span>{{insurance.insuranceType}}</p>
+        </mat-card>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</mat-card>
