@@ -12,22 +12,27 @@
         <button mat-button type="button" (click)="switchIsPatient(false)">Nuevo profesional</button>
 
         <div *ngIf="isPatient">
-          <mat-form-field>
+          <mat-form-field color="accent">
             <mat-label>Número historial clínica</mat-label>
             <input matInput name="nhc" formControlName="nhc" required>
           </mat-form-field>
         </div>
 
         <div *ngIf="!isPatient">
-          <mat-form-field>
+          <mat-form-field color="accent">
             <mat-label>Número colegiado</mat-label>
             <input matInput name="membershipNumber" formControlName="membershipNumber" required>
           </mat-form-field>
 
-          <!-- <mat-label>Tipo de profesional</mat-label>
-            <mat-select name="professionalType" [formControl]="professionalType">
-              <option *ngFor="let option of professionalType">{{option}}</option>
-            </mat-select> -->
+          <mat-form-field color="accent">
+            <mat-label>Tipo de profesional</mat-label>
+            <mat-select formControlName="professionalType">
+              <mat-option value="">--</mat-option>
+              <mat-option value="Médico">Médico</mat-option>
+              <mat-option value="Enfermero">Enfermero</mat-option>
+              <mat-option value="Administrativo">Administrativo</mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
 
         <div class="stepper-buttons">
@@ -39,32 +44,34 @@
         errorMessage="Faltan campos por rellenar">
         <ng-template matStepLabel>Datos personales</ng-template>
 
-        <mat-form-field>
+        <mat-form-field color="accent">
           <mat-label>Nombre</mat-label>
           <input matInput name="name" formControlName="name" required>
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field color="accent">
           <mat-label>Primer Apellido</mat-label>
           <input matInput name="firstSurname" formControlName="firstSurname" required>
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field color="accent">
           <mat-label>Segundo Apellido</mat-label>
           <input matInput name="secondSurname" formControlName="secondSurname">
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field color="accent">
           <mat-label>Género</mat-label>
           <input matInput name="gender" formControlName="gender">
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field color="accent" appearance="standard">
           <mat-label>Fecha de nacimiento</mat-label>
-          <input matInput name="birthDate" formControlName="birthDate">
+          <input matInput [matDatepicker]="picker1">
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field color="accent">
           <mat-label>NIF o número de pasaporte</mat-label>
           <input matInput name="idDocument" formControlName="idDocument">
         </mat-form-field>
@@ -78,27 +85,27 @@
       <mat-step formGroupName="address">
         <ng-template matStepLabel>Dirección</ng-template>
 
-        <mat-form-field>
+        <mat-form-field color="accent">
           <mat-label>Calle</mat-label>
           <input matInput name="street" formControlName="street">
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field color="accent">
           <mat-label>Número</mat-label>
           <input matInput name="number" formControlName="number">
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field color="accent">
           <mat-label>Puerta</mat-label>
           <input matInput name="door" formControlName="door">
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field color="accent">
           <mat-label>Código postal</mat-label>
           <input matInput name="postalCode" formControlName="postalCode">
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field color="accent">
           <mat-label>Ciudad</mat-label>
           <input matInput name="city" formControlName="city">
         </mat-form-field>
@@ -114,26 +121,31 @@
 
         <button mat-button type="button" (click)="addInsurance()">Añadir seguro</button>
 
-        <div formArrayName="insuranceList" *ngFor="let insurance of insuranceList.controls; let i = index">
+        <mat-card class="insurance" formArrayName="insuranceList" *ngFor="let insurance of insuranceList.controls; let i = index">
           <div [formGroupName]="i">
-            <mat-form-field>
+            <mat-form-field color="accent">
               <mat-label>Número de tarjeta</mat-label>
               <input matInput name="cardNumber" formControlName="cardNumber">
             </mat-form-field>
 
-            <mat-form-field>
+            <mat-form-field color="accent">
               <mat-label>Nombre de aseguradora</mat-label>
               <input matInput name="name" formControlName="name">
             </mat-form-field>
 
-            <mat-form-field>
-              <mat-label>Tipo de seguro</mat-label>
-              <input matInput name="insuranceType" formControlName="insuranceType">
+            <mat-form-field color="accent">
+              <mat-label>Tipo de profesional</mat-label>
+              <mat-select formControlName="insuranceType">
+                <mat-option value="">--</mat-option>
+                <mat-option value="Salud">Salud</mat-option>
+                <mat-option value="Familiar">Familiar</mat-option>
+                <mat-option value="Dental">Dental</mat-option>
+              </mat-select>
             </mat-form-field>
 
             <button mat-button type="button" (click)="removeInsurance(i)">Borrar aseguradora</button>
           </div>
-        </div>
+        </mat-card>
 
         <div class="stepper-buttons">
           <button mat-button type="button" matStepperPrevious>Atrás</button>
@@ -141,17 +153,15 @@
         </div>
       </mat-step>
 
-      <!-- <mat-step>
+      <mat-step>
         <ng-template matStepLabel>Crear</ng-template>
         <button mat-raised-button color="primary" type="submit">Crear</button>
 
         <div class="stepper-buttons">
           <button mat-button type="button" matStepperPrevious>Atrás</button>
         </div>
-      </mat-step> -->
-
-
+      </mat-step>
     </mat-horizontal-stepper>
-    <button [disabled]="!isFormValid()" mat-raised-button color="primary" type="submit">Crear</button>
+    <!-- <button [disabled]="!isFormValid()" mat-raised-button color="primary" type="submit">Crear</button> -->
   </form>
 </mat-card>

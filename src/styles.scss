@@ -16,7 +16,7 @@
 // hue. Available color palettes: https://material.io/design/color/
 // $final-proyect-rs-primary: mat-palette($mat-teal, A200, A100, A400);
 $final-proyect-rs-primary: mat-palette($mat-cyan, 200, 500, 600);
-$final-proyect-rs-accent: mat-palette($mat-amber, A200);
+$final-proyect-rs-accent: mat-palette($mat-cyan, 700);
 
 // The warn palette is optional (defaults to red).
 $final-proyect-rs-warn: mat-palette($mat-red);
@@ -38,9 +38,5 @@ $final-proyect-rs-theme: mat-light-theme((
 
 /* You can add global styles to this file, and also import other style files */
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-// #8AC6D1#FFE3ED#FFFDF9#beebe9
-// #FFC55C#E7A4E4#B2DFFB#d3f4ff
-// #FFE3ED#FFFDF9#BEEBE9#9be3de
-// 3e64ff 5edfff b2fcff ecfcff
-// e36387 f2aaaa  a6dcef ddf3f5
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
+}
