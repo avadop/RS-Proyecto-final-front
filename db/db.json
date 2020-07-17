@@ -1,58 +1,88 @@
 {
   "users": [
     {
-      "id": 3,
-      "nhc": "1234",
-      "name": "233",
-      "firstSurname": "444"
+      "name": "Andrea",
+      "firstSurname": "del Vado",
+      "secondSurname": "Puell",
+      "gender": "Femenino",
+      "birthDate": "31-10-1996",
+      "idDocument": "01189877H",
+      "address": {
+        "street": "calle"
+      },
+      "nhc": "00121",
+      "id": 1
     },
     {
-      "id": 4,
-      "nhc": "222",
-      "name": "2222",
-      "firstSurname": "2222"
+      "name": "Enfermero",
+      "firstSurname": "De",
+      "secondSurname": "Primera",
+      "gender": "Femenino",
+      "birthDate": "",
+      "idDocument": "",
+      "address": {
+        "street": "",
+        "number": "",
+        "door": "",
+        "postalCode": "",
+        "city": ""
+      },
+      "membershipNumber": "colegiado",
+      "profesionalType": "Enfermero",
+      "id": 3
     },
     {
-      "nhc": "000012",
-      "name": "Name",
-      "firstSurname": "Surname",
+      "name": "Dario",
+      "firstSurname": "Gallegos",
+      "secondSurname": "Quishpe",
+      "gender": "Masculino",
+      "birthDate": "2020-07-06",
+      "idDocument": "01189877H",
+      "address": {
+        "street": "Calle el Toboso",
+        "number": "102",
+        "door": "Bajo A",
+        "postalCode": "28023",
+        "city": "Madrid"
+      },
+      "nhc": "123456789",
+      "insuranceList": [
+        {
+          "name": "Andrea del Vado Puell",
+          "cardNumber": "asd",
+          "insuranceType": "Dental"
+        },
+        {
+          "name": "Seguro 1",
+          "cardNumber": "asd",
+          "insuranceType": "Familiar"
+        }
+      ],
+      "id": 4
+    },
+    {
+      "nhc": "numero",
+      "name": "Paciente",
+      "firstSurname": "de",
+      "secondSurname": "Prueba",
+      "gender": "",
+      "birthDate": "",
+      "idDocument": "",
+      "address": {
+        "street": "",
+        "number": "",
+        "door": "",
+        "postalCode": "",
+        "city": ""
+      },
+      "insuranceList": [
+        {
+          "cardNumber": "Tarjeta",
+          "name": "Aseguradora",
+          "insuranceType": "salud"
+        }
+      ],
       "id": 5
-    },
-    {
-      "colegiateNumber": "000012",
-      "name": "Name",
-      "firstSurname": "Surname",
-      "id": 6
-    },
-    {
-      "colegiateNumber": "000012",
-      "name": "Name",
-      "firstSurname": "Surname",
-      "id": 7
-    },
-    {
-      "colegiateNumber": "000012",
-      "name": "Name",
-      "firstSurname": "Surname",
-      "id": 9
-    },
-    {
-      "colegiateNumber": "000012",
-      "name": "Name",
-      "firstSurname": "Surname",
-      "id": 10
-    },
-    {
-      "nhc": "000012",
-      "name": "Name",
-      "firstSurname": "Surname",
-      "id": 11
-    },
-    {
-      "nhc": "000012",
-      "name": "Name",
-      "firstSurname": "Surname",
-      "id": 12
     }
   ]
 }

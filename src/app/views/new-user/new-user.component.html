@@ -1,66 +1,157 @@
-<div id="new-user">
-  <button (click)="switchIsPatient(true)">Nuevo paciente</button>
-  <button (click)="switchIsPatient(false)">Nuevo profesional</button>
+<mat-card id="new-user">
+  <!-- <form #userForm="ngForm" validators (ngSubmit)="createUser(userForm)"> -->
+  <form (ngSubmit)="createUser()" [formGroup]="newUserForm">
+    <mat-horizontal-stepper #stepper>
 
-  <form #userForm="ngForm" (ngSubmit)="createUser(userForm)">
-    <div *ngIf="isPatient">
-      <p>NHC</p>
-      <input  ngModel name="nhc" required>
-    </div>
-  
-    <div *ngIf="!isPatient">
-      <p>Número colegiado</p>
-      <input ngModel name="membershipNumber" required>
-      <p>Tipo de profesional</p>
-      <select ngModel name="profesionalType">
-        <option *ngFor="let option of professionalType">{{option}}</option>
-      </select>
-    </div>
+      <mat-step
+        [stepControl]="(isPatient && newUserForm.controls['nhc']) || (!isPatient && newUserForm.controls['membershipNumber'])"
+        errorMessage="Faltan campos por rellenar">
+        <ng-template matStepLabel>Tipo de usuario</ng-template>
 
-    <p>Nombre </p>
-    <input  ngModel name="name" required>
-    <p>Primer Apellido</p>
-    <input  ngModel name="firstSurname" required>
-    <p>Segundo Apellido</p>
-    <input  ngModel name="secondSurname" >
+        <button mat-button type="button" (click)="switchIsPatient(true)">Nuevo paciente</button>
+        <button mat-button type="button" (click)="switchIsPatient(false)">Nuevo profesional</button>
 
-    <p>Género</p>
-    <input  ngModel name="gender">
-    <p>Fecha de nacimiento</p>
-    <input type="date" ngModel name="birthDate">
+        <div *ngIf="isPatient">
+          <mat-form-field>
+            <mat-label>Número historial clínica</mat-label>
+            <input matInput name="nhc" formControlName="nhc" required>
+          </mat-form-field>
+        </div>
 
-    <p>NIF o número de pasaporte</p>
-    <input  ngModel name="idDocument">
+        <div *ngIf="!isPatient">
+          <mat-form-field>
+            <mat-label>Número colegiado</mat-label>
+            <input matInput name="membershipNumber" formControlName="membershipNumber" required>
+          </mat-form-field>
 
-    <p>Dirección</p>
-    <form ngModelGroup="address">
-      <p>Calle</p>
-      <input  ngModel name="street">
-      <p>Número</p>
-      <input  ngModel name="number">
-      <p>Puerta</p>
-      <input  ngModel name="door">
-      <p>Código postal</p>
-      <input  ngModel name="postalCode">
-      <p>Ciudad</p>
-      <input  ngModel name="city">
-    </form>
+          <!-- <mat-label>Tipo de profesional</mat-label>
+            <mat-select name="professionalType" [formControl]="professionalType">
+              <option *ngFor="let option of professionalType">{{option}}</option>
+            </mat-select> -->
+        </div>
 
-    <div *ngIf="isPatient">
-      <button type="button" (click)="addInsurance()">Añadir Seguro médico</button>
-      <div class="insurance" ngModelGroup="insuranceList" *ngFor="let insurance of insuranceList">
-        <p>Nombre insurance</p>
-        <input [(ngModel)]="insurance.name" name="name" >
-        <p>Número tarjeta</p>
-        <input [(ngModel)]="insurance.cardNumber" name="cardNumber" >
-        <p>Tipo de seguro</p>
-        <select [(ngModel)]="insurance.insuranceType" name="insuranceType">
-          <option *ngFor="let option of insuranceType">{{option}}</option>
-        </select>
-      </div>
-    </div>
-    
-    <button type="submit">Crear</button>
+        <div class="stepper-buttons">
+          <button mat-button type="button" matStepperNext>Siguiente</button>
+        </div>
+      </mat-step>
+
+      <mat-step [stepControl]="newUserForm.controls['name'] && newUserForm.controls['firstSurname']"
+        errorMessage="Faltan campos por rellenar">
+        <ng-template matStepLabel>Datos personales</ng-template>
+
+        <mat-form-field>
+          <mat-label>Nombre</mat-label>
+          <input matInput name="name" formControlName="name" required>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Primer Apellido</mat-label>
+          <input matInput name="firstSurname" formControlName="firstSurname" required>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Segundo Apellido</mat-label>
+          <input matInput name="secondSurname" formControlName="secondSurname">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Género</mat-label>
+          <input matInput name="gender" formControlName="gender">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Fecha de nacimiento</mat-label>
+          <input matInput name="birthDate" formControlName="birthDate">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>NIF o número de pasaporte</mat-label>
+          <input matInput name="idDocument" formControlName="idDocument">
+        </mat-form-field>
+
+        <div class="stepper-buttons">
+          <button mat-button type="button" matStepperPrevious>Atrás</button>
+          <button mat-button type="button" matStepperNext>Siguiente</button>
+        </div>
+      </mat-step>
+
+      <mat-step formGroupName="address">
+        <ng-template matStepLabel>Dirección</ng-template>
+
+        <mat-form-field>
+          <mat-label>Calle</mat-label>
+          <input matInput name="street" formControlName="street">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Número</mat-label>
+          <input matInput name="number" formControlName="number">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Puerta</mat-label>
+          <input matInput name="door" formControlName="door">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Código postal</mat-label>
+          <input matInput name="postalCode" formControlName="postalCode">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Ciudad</mat-label>
+          <input matInput name="city" formControlName="city">
+        </mat-form-field>
+
+        <div class="stepper-buttons">
+          <button mat-button type="button" matStepperPrevious>Atrás</button>
+          <button mat-button type="button" matStepperNext>Siguiente</button>
+        </div>
+      </mat-step> -->
+
+      <mat-step *ngIf="isPatient">
+        <ng-template matStepLabel>Aseguradoras</ng-template>
+
+        <button mat-button type="button" (click)="addInsurance()">Añadir seguro</button>
+
+        <div formArrayName="insuranceList" *ngFor="let insurance of insuranceList.controls; let i = index">
+          <div [formGroupName]="i">
+            <mat-form-field>
+              <mat-label>Número de tarjeta</mat-label>
+              <input matInput name="cardNumber" formControlName="cardNumber">
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Nombre de aseguradora</mat-label>
+              <input matInput name="name" formControlName="name">
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Tipo de seguro</mat-label>
+              <input matInput name="insuranceType" formControlName="insuranceType">
+            </mat-form-field>
+
+            <button mat-button type="button" (click)="removeInsurance(i)">Borrar aseguradora</button>
+          </div>
+        </div>
+
+        <div class="stepper-buttons">
+          <button mat-button type="button" matStepperPrevious>Atrás</button>
+          <button mat-button type="button" matStepperNext>Siguiente</button>
+        </div>
+      </mat-step>
+
+      <!-- <mat-step>
+        <ng-template matStepLabel>Crear</ng-template>
+        <button mat-raised-button color="primary" type="submit">Crear</button>
+
+        <div class="stepper-buttons">
+          <button mat-button type="button" matStepperPrevious>Atrás</button>
+        </div>
+      </mat-step> -->
+
+
+    </mat-horizontal-stepper>
+    <button [disabled]="!isFormValid()" mat-raised-button color="primary" type="submit">Crear</button>
   </form>
-
-</div>
+</mat-card>
