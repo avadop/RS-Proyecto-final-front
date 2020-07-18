@@ -1,3 +1,239 @@
-<div id="edit-user">
-  <p>edit-user works!</p>
+<div id="edit-user" *ngIf="user">
+  <div class="expand-contract-buttons">
+    <button mat-stroked-button color="accent" (click)="accordion.openAll()">Desplegar todos</button>
+    <button mat-stroked-button color="accent" (click)="accordion.closeAll()">Cerrar todos</button>
+  </div>
+
+  <mat-accordion multi>
+    <mat-expansion-panel *ngIf="isPatient">
+      <mat-expansion-panel-header class="section-title">
+        Datos de paciente
+      </mat-expansion-panel-header>
+      <div *ngIf="!editingPatientData; else editPatientData">
+
+        <button class="section-button" mat-mini-fab type="button" color="primary" (click)="switchToEditPatientData()">
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <p><span class="field-title">NHC: </span> {{user.nhc}}</p>
+      </div>
+
+      <ng-template #editPatientData>
+        <mat-form-field color="accent">
+          <mat-label>Número de historial Clínico</mat-label>
+          <input matInput type="text" [(ngModel)]="nhc">
+        </mat-form-field>
+
+        <button class="section-button" mat-mini-fab type="button" color="accent" (click)="saveNHC()">
+          <mat-icon>save</mat-icon>
+        </button>
+      </ng-template>
+
+    </mat-expansion-panel>
+
+    <mat-expansion-panel *ngIf="!isPatient">
+      <mat-expansion-panel-header class="section-title">
+        Datos de profesional
+      </mat-expansion-panel-header>
+      <div *ngIf="!editingProfessionalData; else editProfessionalData">
+        <button class="section-button" mat-mini-fab type="button" color="primary"
+          (click)="switchToEditProfessionalData()">
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <p><span class="field-title">Número de colegiado: </span> {{user.membershipNumber}}</p>
+        <p><span class="field-title">Tipo de profesional: </span> {{user.professionalType}}</p>
+      </div>
+
+      <ng-template #editProfessionalData>
+        <mat-form-field color="accent">
+          <mat-label>Número de colegiado</mat-label>
+          <input matInput type="text" [(ngModel)]="membershipNumber">
+        </mat-form-field>
+
+        <mat-form-field color="accent">
+          <mat-label>Tipo de profesional</mat-label>
+          <mat-select [(ngModel)]="professionalType">
+            <mat-option value="">--</mat-option>
+            <mat-option value="Médico">Médico</mat-option>
+            <mat-option value="Enfermero">Enfermero</mat-option>
+            <mat-option value="Administrativo">Administrativo</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <button class="section-button" mat-mini-fab type="button" color="accent" (click)="saveProfessionalData()">
+          <mat-icon>save</mat-icon>
+        </button>
+      </ng-template>
+
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header class="section-title">
+        Datos personales
+      </mat-expansion-panel-header>
+      <div *ngIf="!editingPersonalData; else editPersonalData">
+        <button class="section-button" mat-mini-fab type="button" color="primary" (click)="switchToEditPersonalData()">
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <p><span class="field-title">Nombre: </span>{{user.name}}</p>
+        <p><span class="field-title">Primer apellido: </span>{{user.firstSurname}}</p>
+        <p><span class="field-title">Segundo apellido: </span> {{user.secondSurname}}</p>
+        <p><span class="field-title">Género: </span> {{user.gender}}</p>
+        <p><span class="field-title">Fecha de nacimiento: </span>{{user.birthDate | date:"dd/MM/yyyy"}}</p>
+        <p><span class="field-title">NIF o Pasaporte</span>{{user.idDocument}}</p>
+      </div>
+
+      <ng-template #editPersonalData>
+        <mat-form-field color="accent">
+          <mat-label>Nombre</mat-label>
+          <input matInput name="name" [(ngModel)]="name" required>
+        </mat-form-field>
+
+        <mat-form-field color="accent">
+          <mat-label>Primer Apellido</mat-label>
+          <input matInput name="firstSurname" [(ngModel)]="firstSurname" required>
+        </mat-form-field>
+
+        <mat-form-field color="accent">
+          <mat-label>Segundo Apellido</mat-label>
+          <input matInput name="secondSurname" [(ngModel)]="secondSurname">
+        </mat-form-field>
+
+        <mat-form-field color="accent">
+          <mat-label>Género</mat-label>
+          <input matInput name="gender" [(ngModel)]="gender">
+        </mat-form-field>
+
+        <mat-form-field color="accent" appearance="standard">
+          <mat-label>Fecha de nacimiento</mat-label>
+          <input matInput [(ngModel)]="birthDate" [matDatepicker]="picker1" disabled>
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1 disabled="false"></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field color="accent">
+          <mat-label>NIF o número de pasaporte</mat-label>
+          <input matInput name="idDocument" [(ngModel)]="idDocument">
+        </mat-form-field>
+
+
+        <button class="section-button" mat-mini-fab type="button" color="accent" (click)="savePersonalData()">
+          <mat-icon>save</mat-icon>
+        </button>
+      </ng-template>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header class="section-title">
+        Dirección
+      </mat-expansion-panel-header>
+
+      <div *ngIf="!editingAddress; else editAddress">
+        <button class="section-button" mat-mini-fab type="button" color="primary" (click)="switchToEditAddress()">
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <p><span class="field-title">Calle: </span>{{user.address.street}}</p>
+        <p><span class="field-title">Número: </span>{{user.address.number}}</p>
+        <p><span class="field-title">Puerta: </span> {{user.address.door}}</p>
+        <p><span class="field-title">Código postal: </span> {{user.address.postalCode}}</p>
+        <p><span class="field-title">Ciudad: </span>{{user.address.city}}</p>
+      </div>
+
+      <ng-template #editAddress>
+        <form (ngSubmit)="saveAddress()" [formGroup]="addressForm">
+
+          <mat-form-field color="accent">
+            <mat-label>Calle</mat-label>
+            <input matInput name="street" formControlName="street">
+          </mat-form-field>
+
+          <mat-form-field color="accent">
+            <mat-label>Número</mat-label>
+            <input matInput name="number" formControlName="number">
+          </mat-form-field>
+
+          <mat-form-field color="accent">
+            <mat-label>Puerta</mat-label>
+            <input matInput name="door" formControlName="door">
+          </mat-form-field>
+
+          <mat-form-field color="accent">
+            <mat-label>Código postal</mat-label>
+            <input matInput name="postalCode" formControlName="postalCode">
+          </mat-form-field>
+
+          <mat-form-field color="accent">
+            <mat-label>Ciudad</mat-label>
+            <input matInput name="city" formControlName="city">
+          </mat-form-field>
+
+          <button class="section-button" mat-mini-fab type="submit" color="accent">
+            <mat-icon>save</mat-icon>
+          </button>
+        </form>
+      </ng-template>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel *ngIf="isPatient">
+      <mat-expansion-panel-header class="section-title">
+        Aseguradoras
+      </mat-expansion-panel-header>
+      <div id="insurances" *ngIf="!modifyingInsurance">
+        <mat-card class="insurance" *ngFor="let insurance of user.insuranceList; let i = index">
+          <h2>{{insurance.name}}</h2>
+          <p><span class="field-title">Número tarjeta: </span> {{insurance.cardNumber}}</p>
+          <p><span class="field-title">Tipo de aseguradora: </span>{{insurance.insuranceType}}</p>
+          <div class="insurance-btns">
+            <button mat-mini-fab type="button" color="primary" (click)="switchToModifyInsurance(i)">
+              <mat-icon>edit</mat-icon>
+            </button>
+
+            <button mat-mini-fab type="button" color="warn" (click)="deleteInsurance(i)">
+              <mat-icon>delete</mat-icon>
+            </button>
+
+          </div>
+        </mat-card>
+      </div>
+
+      <button *ngIf="!addingInsurance && !modifyingInsurance; else activateInsuranceForm" class="section-button"
+        mat-mini-fab type="button" color="accent" (click)="addInsurance()">
+        <mat-icon>add</mat-icon>
+      </button>
+
+      <ng-template #activateInsuranceForm>
+        <form (ngSubmit)="saveInsurance()" [formGroup]="insuranceForm">
+          <!-- <form *ngIf="modifyingInsurance" (ngSubmit)="saveNewInsurance()" [formGroup]="insuranceForm"> -->
+
+          <mat-form-field color="accent">
+            <mat-label>Número de tarjeta</mat-label>
+            <input matInput name="cardNumber" formControlName="cardNumber">
+          </mat-form-field>
+
+          <mat-form-field color="accent">
+            <mat-label>Nombre de aseguradora</mat-label>
+            <input matInput name="name" formControlName="name">
+          </mat-form-field>
+
+          <mat-form-field color="accent">
+            <mat-label>Tipo de profesional</mat-label>
+            <mat-select formControlName="insuranceType">
+              <mat-option value="">--</mat-option>
+              <mat-option value="Salud">Salud</mat-option>
+              <mat-option value="Familiar">Familiar</mat-option>
+              <mat-option value="Dental">Dental</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <button class="section-button" mat-mini-fab type="submit" color="accent">
+            <mat-icon>save</mat-icon>
+          </button>
+        </form>
+      </ng-template>
+
+    </mat-expansion-panel>
+
+  </mat-accordion>
 </div>

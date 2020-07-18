@@ -3,18 +3,32 @@
 
     <mat-tab label="Datos personales">
       <div class="tab-content">
-        <p *ngIf="isPatient"><span class="field-title">NHC: </span>{{user.nhc}}</p>
-        <p><span class="field-title">Nombre: </span>{{user.name}}</p>
-        <p><span class="field-title">Primer apellido: </span>{{user.firstSurname}}</p>
-        <p><span class="field-title">Segundo apellido: </span> {{user.secondSurname}}</p>
-        <p><span class="field-title">Género: </span> {{user.gender}}</p>
-        <p><span class="field-title">Fecha de nacimiento: </span>{{user.birthDate}}</p>
-        <p><span class="field-title">NIF o Pasaporte</span>{{user.idDocument}}</p>
+        <div class="tab-section">
+          <p *ngIf="isPatient"><span class="field-title">Número de historial clínico: </span>{{user.nhc}}</p>
+          <div *ngIf="!isPatient">
+            <p><span class="field-title">Número de colegiado: </span>{{user.membershipNumber}}</p>
+            <p><span class="field-title">Tipo de profesional: </span>{{user.professionalType}}</p>
+          </div>
+        </div>
+
+        <mat-divider></mat-divider>
+        <div class="tab-section">
+          <p><span class="field-title">Nombre: </span>{{user.name}}</p>
+          <p><span class="field-title">Primer apellido: </span>{{user.firstSurname}}</p>
+          <p><span class="field-title">Segundo apellido: </span> {{user.secondSurname}}</p>
+        </div>
+        <mat-divider></mat-divider>
+
+        <div class="tab-section">
+          <p><span class="field-title">Género: </span> {{user.gender}}</p>
+          <p><span class="field-title">Fecha de nacimiento: </span>{{user.birthDate | date: 'dd/MM/yyyy'}}</p>
+          <p><span class="field-title">NIF o Pasaporte: </span>{{user.idDocument}}</p>
+        </div>
       </div>
     </mat-tab>
 
     <mat-tab label="Dirección">
-      <div class="tab-content">
+      <div class="tab-content address">
         <p><span class="field-title">Calle: </span>{{user.address.street}}</p>
         <p><span class="field-title">Número: </span>{{user.address.number}}</p>
         <p><span class="field-title">Puerta: </span> {{user.address.door}}</p>
@@ -25,9 +39,10 @@
 
     <mat-tab *ngIf="isPatient" label="Aseguradoras">
       <div class="tab-content">
+        <h3 *ngIf="user.insuranceList.length === 0"> No hay ninguna aseguradora registrada para este paciente</h3>
         <mat-card class="insurance" *ngFor="let insurance of user.insuranceList">
-          <p><span class="field-title">Nombre: </span> {{insurance.name}}</p>
-          <p><span class="field-title">Número tarjeta: </span> {{insurance.cardNumber}}</p>
+          <h2>{{insurance.name}}</h2>
+          <p><span class="field-title">Número de tarjeta: </span> {{insurance.cardNumber}}</p>
           <p><span class="field-title">Tipo de aseguradora: </span>{{insurance.insuranceType}}</p>
         </mat-card>
       </div>

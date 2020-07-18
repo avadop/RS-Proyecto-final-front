@@ -2,20 +2,35 @@
   margin: auto;
   max-width: 70em;
 
+  .address{
+    padding-top: 1.5em;
+  }
+
   .tab-content{
     padding: {
-      top: 1.5em;
       right: 1em; 
-      left: 1em;
+      left: 2em;
+    }
+
+    .tab-section{
+      padding: {
+        top:1.5em;
+        bottom: 0.5em;
+      } 
     }
 
     .insurance{
-      margin: 1em;
+      margin: 1em 0;
     }
 
     .field-title{
-      font-weight: bold;
+      font-weight: 600;
+      color: #585656;
       margin-right: 0.7em;
+    }
+
+    h2{
+      color: #585656;
     }
   }
 }
