@@ -1,7 +1,7 @@
 <mat-card id="new-user">
   <!-- <form #userForm="ngForm" validators (ngSubmit)="createUser(userForm)"> -->
   <form (ngSubmit)="createUser()" [formGroup]="newUserForm">
-    <mat-horizontal-stepper #stepper>
+    <mat-vertical-stepper  #stepper>
 
       <mat-step
         [stepControl]="(isPatient && newUserForm.controls['nhc']) || (!isPatient && newUserForm.controls['membershipNumber'])"
@@ -34,10 +34,6 @@
             </mat-select>
           </mat-form-field>
         </div>
-
-        <div class="stepper-buttons">
-          <button mat-button type="button" matStepperNext>Siguiente</button>
-        </div>
       </mat-step>
 
       <mat-step [stepControl]="newUserForm.controls['name'] && newUserForm.controls['firstSurname']"
@@ -66,20 +62,15 @@
 
         <mat-form-field color="accent" appearance="standard">
           <mat-label>Fecha de nacimiento</mat-label>
-          <input matInput [matDatepicker]="picker1">
+          <input matInput formControlName="birthDate" [matDatepicker]="picker1" disabled>
           <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-          <mat-datepicker #picker1></mat-datepicker>
+          <mat-datepicker #picker1 disabled="false"></mat-datepicker>
         </mat-form-field>
 
         <mat-form-field color="accent">
           <mat-label>NIF o número de pasaporte</mat-label>
           <input matInput name="idDocument" formControlName="idDocument">
         </mat-form-field>
-
-        <div class="stepper-buttons">
-          <button mat-button type="button" matStepperPrevious>Atrás</button>
-          <button mat-button type="button" matStepperNext>Siguiente</button>
-        </div>
       </mat-step>
 
       <mat-step formGroupName="address">
@@ -109,11 +100,6 @@
           <mat-label>Ciudad</mat-label>
           <input matInput name="city" formControlName="city">
         </mat-form-field>
-
-        <div class="stepper-buttons">
-          <button mat-button type="button" matStepperPrevious>Atrás</button>
-          <button mat-button type="button" matStepperNext>Siguiente</button>
-        </div>
       </mat-step> -->
 
       <mat-step *ngIf="isPatient">
@@ -146,22 +132,10 @@
             <button mat-button type="button" (click)="removeInsurance(i)">Borrar aseguradora</button>
           </div>
         </mat-card>
-
-        <div class="stepper-buttons">
-          <button mat-button type="button" matStepperPrevious>Atrás</button>
-          <button mat-button type="button" matStepperNext>Siguiente</button>
-        </div>
       </mat-step>
 
-      <mat-step>
-        <ng-template matStepLabel>Crear</ng-template>
-        <button mat-raised-button color="primary" type="submit">Crear</button>
+    </mat-vertical-stepper>
 
-        <div class="stepper-buttons">
-          <button mat-button type="button" matStepperPrevious>Atrás</button>
-        </div>
-      </mat-step>
-    </mat-horizontal-stepper>
-    <!-- <button [disabled]="!isFormValid()" mat-raised-button color="primary" type="submit">Crear</button> -->
+    <button [disabled]="!isFormValid()" id="create-btn" mat-raised-button color="primary" type="submit">Crear</button>
   </form>
 </mat-card>

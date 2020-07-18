@@ -7,4 +7,13 @@
   .insurance{
     margin: 1em;
   }
+  form{
+    display:flex;
+    flex-direction: column;
+    
+    #create-btn{
+      align-self:flex-end;
+    }
+  }
+
 }
