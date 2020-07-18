@@ -1,3 +1,17 @@
 #header{
   padding: 2em;
+  height: 13vh;
+  box-sizing: border-box;
+
+  #logo{
+    height:auto;
+    width: 100%;
+    max-width: 12em;
+    
+    cursor: pointer;
+
+    &:focus{
+      outline:none;
+    }
+  }
 }
