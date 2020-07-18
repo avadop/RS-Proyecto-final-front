@@ -1,17 +1,18 @@
-  
-  <button mat-raised-button id="delete-doctors-btn" (click)="deleteAllDoctors()">Borrar médicos</button>
+  <div id="buttons-users">
+    <button mat-flat-button id="btn-new-user" color="accent" routerLink="/users/new">Nuevo usuario</button>
+    <button mat-flat-button color="warn" (click)="deleteAllDoctors()">Borrar médicos</button>
+  </div>
 
-<div id="users">
+  <div id="users">
+    <mat-card class="user" *ngFor="let user of users">
 
-  <mat-card class="user" *ngFor="let user of users">
-
-    <mat-card-title>
-      <p>{{user.name}} {{user.firstSurname}} {{user.secondSurname}}</p>    
-    </mat-card-title>
+      <mat-card-title>
+        <p>{{user.name}} {{user.firstSurname}} {{user.secondSurname}}</p>
+      </mat-card-title>
 
       <mat-card-content *ngIf="isPatient(user)">
         <p>Paciente</p>
-        <p>NHC: {{user.nhc}}</p> 
+        <p>NHC: {{user.nhc}}</p>
       </mat-card-content>
 
       <mat-card-content *ngIf="isProfessional(user)">
@@ -19,11 +20,11 @@
         <p>Número colegiado: {{user.membershipNumber}}</p>
       </mat-card-content>
 
-    <mat-card-actions class="options">
-      <button mat-raised-button routerLink="/users/{{user.id}}">Detalles</button>
-      <button mat-raised-button routerLink="/users/{{user.id}}/edit">Editar</button>
-      <button mat-raised-button (click)="deleteUser(user.id)">Eliminar</button>
-    </mat-card-actions>
-  </mat-card>
+      <mat-card-actions class="options">
+        <button mat-stroked-button routerLink="/users/{{user.id}}">Detalles</button>
+        <button mat-stroked-button color="accent" routerLink="/users/{{user.id}}/edit">Editar</button>
+        <button mat-stroked-button color="warn" (click)="deleteUser(user.id)">Eliminar</button>
+      </mat-card-actions>
+    </mat-card>
 
-</div>
+  </div>

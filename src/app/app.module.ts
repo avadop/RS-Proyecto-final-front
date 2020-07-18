@@ -18,7 +18,6 @@ import { NewUserComponent } from './views/new-user/new-user.component';
 import { EditUserComponent } from './views/edit-user/edit-user.component';
 import { Error404Component } from './views/error404/error404.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ExampleMaterialComponent } from './example-material/example-material.component';
 
 @NgModule({
   declarations: [
@@ -30,8 +29,7 @@ import { ExampleMaterialComponent } from './example-material/example-material.co
     FooterComponent,
     MainComponent,
     Error404Component,
-    EditUserComponent,
-    ExampleMaterialComponent
+    EditUserComponent
   ],
   imports: [
     BrowserModule,
@@ -45,4 +43,5 @@ import { ExampleMaterialComponent } from './example-material/example-material.co
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
