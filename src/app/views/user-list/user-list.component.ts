@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user.model'
 import { MatDialog } from '@angular/material/dialog';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-user-list',
@@ -34,13 +35,10 @@ export class UserListComponent implements OnInit {
   }
   
   deleteAllDoctors(): void{
-
-    for(let i = 0; i < this.users.length; i++){
-
-      if(this.users[i].professionalType !== undefined && this.users[i].professionalType === 'Médico')
-
-        this.userService.deleteUser(this.users[i].id).subscribe();
-    }
+    forkJoin(this.users
+      .filter(user => user.professionalType !== undefined && user.professionalType === 'Médico')
+      .map(user => this.userService.deleteUser(user.id)))
+      .subscribe();
 
     window.location.reload();
   }
