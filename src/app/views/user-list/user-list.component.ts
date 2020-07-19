@@ -4,6 +4,7 @@ import { User } from 'src/app/models/user.model'
 import { MatDialog } from '@angular/material/dialog';
 import { forkJoin } from 'rxjs';
 import { DialogDeleteUserComponent } from 'src/app/components/dialog-delete-user/dialog-delete-user.component';
+import { DialogDeleteAllDoctorsComponent } from 'src/app/components/dialog-delete-all-doctors/dialog-delete-all-doctors.component';
 
 @Component({
   selector: 'app-user-list',
@@ -47,7 +48,15 @@ export class UserListComponent implements OnInit {
   openDeleteUserDialog(id: number): void {
     const dialogRef = this.dialog.open(DialogDeleteUserComponent);
     dialogRef.afterClosed().subscribe(result => {
-      if(result === true) this.deleteUser(id)
+      if(result) this.deleteUser(id);
+    });
+  }
+
+  openDeleteAllDoctorsDialog(): void {
+    const dialogRef = this.dialog.open(DialogDeleteAllDoctorsComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result) this.deleteAllDoctors();
     })
   }
 
