@@ -42,7 +42,7 @@ export class NewUserComponent implements OnInit {
       firstSurname: ['', Validators.required],
       secondSurname: '',
       gender: '',
-      birthDate: '',
+      birthDate: {value: '', disabled:true},
       idDocument: '',
 
       address: this.formBuilder.group({

@@ -11,6 +11,11 @@
       button{
         margin: 0 0.5em;
       }
+      @media ( max-width: 447px){
+        button{
+          margin-bottom: 0.5em;
+        }
+      }
     }
     
     #create-btn{
