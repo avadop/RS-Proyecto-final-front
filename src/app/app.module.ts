@@ -18,6 +18,8 @@ import { NewUserComponent } from './views/new-user/new-user.component';
 import { EditUserComponent } from './views/edit-user/edit-user.component';
 import { Error404Component } from './views/error404/error404.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DialogDeleteUserComponent } from './components/dialog-delete-user/dialog-delete-user.component';
+import { DialogDeleteAllDoctorsComponent } from './components/dialog-delete-all-doctors/dialog-delete-all-doctors.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FooterComponent,
     MainComponent,
     Error404Component,
-    EditUserComponent
+    EditUserComponent,
+    DialogDeleteUserComponent,
+    DialogDeleteAllDoctorsComponent
   ],
   imports: [
     BrowserModule,
