@@ -2,6 +2,13 @@
   margin: auto;
   max-width: 70em;
 
+  mat-form-field{
+    margin: 0.5em 1em;
+  }
+  .datepicker{
+    max-width: 13em;
+  }
+
   .expand-contract-buttons {
     margin-bottom: 1em;
     display: flex;
@@ -26,7 +33,6 @@
     position: absolute;
     right: 0;
     bottom: 0;
-    // box-shadow: none;
     margin: {
       right: 2em;
       bottom: 1.5em;
@@ -44,7 +50,6 @@
         position: absolute;
         right: 0;
         bottom: 0;
-        // box-shadow: none;
         margin: {
           right: 2em;
           bottom: 1.5em;
