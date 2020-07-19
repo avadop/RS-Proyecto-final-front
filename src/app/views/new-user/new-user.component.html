@@ -1,15 +1,19 @@
 <mat-card id="new-user">
   <!-- <form #userForm="ngForm" validators (ngSubmit)="createUser(userForm)"> -->
   <form (ngSubmit)="createUser()" [formGroup]="newUserForm">
-    <mat-vertical-stepper  #stepper>
+    <mat-vertical-stepper #stepper>
 
       <mat-step
         [stepControl]="(isPatient && newUserForm.controls['nhc']) || (!isPatient && newUserForm.controls['membershipNumber'])"
         errorMessage="Faltan campos por rellenar">
         <ng-template matStepLabel>Tipo de usuario</ng-template>
 
-        <button mat-button type="button" (click)="switchIsPatient(true)">Nuevo paciente</button>
-        <button mat-button type="button" (click)="switchIsPatient(false)">Nuevo profesional</button>
+        <div id="user-type-buttons">
+          <button mat-stroked-button color="accent" type="button" (click)="switchIsPatient(true)">Nuevo
+            paciente</button>
+          <button mat-button mat-stroked-button color="accent" type="button" (click)="switchIsPatient(false)">Nuevo
+            profesional</button>
+        </div>
 
         <div *ngIf="isPatient">
           <mat-form-field color="accent">
@@ -60,7 +64,7 @@
           <input matInput name="gender" formControlName="gender">
         </mat-form-field>
 
-        <mat-form-field color="accent" appearance="standard">
+        <mat-form-field class="datepicker" color="accent" appearance="standard">
           <mat-label>Fecha de nacimiento</mat-label>
           <input matInput formControlName="birthDate" [matDatepicker]="picker1" disabled>
           <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
@@ -107,7 +111,8 @@
 
         <button mat-button type="button" (click)="addInsurance()">Añadir seguro</button>
 
-        <mat-card class="insurance" formArrayName="insuranceList" *ngFor="let insurance of insuranceList.controls; let i = index">
+        <mat-card class="insurance" formArrayName="insuranceList"
+          *ngFor="let insurance of insuranceList.controls; let i = index">
           <div [formGroupName]="i">
             <mat-form-field color="accent">
               <mat-label>Número de tarjeta</mat-label>
@@ -128,9 +133,8 @@
                 <mat-option value="Dental">Dental</mat-option>
               </mat-select>
             </mat-form-field>
-
-            <button mat-button type="button" (click)="removeInsurance(i)">Borrar aseguradora</button>
           </div>
+          <button mat-stroked-button color="warn" type="button" (click)="removeInsurance(i)">Borrar aseguradora</button>
         </mat-card>
       </mat-step>
 

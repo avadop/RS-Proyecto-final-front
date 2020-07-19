@@ -3,16 +3,35 @@
 #new-user{
   margin: auto;
   max-width: 70em;
- 
-  .insurance{
-    margin: 1em;
-  }
+
   form{
     display:flex;
     flex-direction: column;
+    #user-type-buttons{
+      button{
+        margin: 0 0.5em;
+      }
+    }
     
     #create-btn{
       align-self:flex-end;
+    }
+
+    mat-form-field{
+      margin: 0.5em 1em;
+    }
+
+    .datepicker{
+      max-width: 13em;
+    }
+
+    .insurance{
+      margin: 1em;
+      display:flex;
+      flex-direction: column;
+      button{
+        align-self: flex-end;
+      }
     }
   }
 
