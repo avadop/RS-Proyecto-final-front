@@ -23,7 +23,7 @@
       <mat-card-actions class="options">
         <button mat-stroked-button routerLink="/users/{{user.id}}">Detalles</button>
         <button mat-stroked-button color="accent" routerLink="/users/{{user.id}}/edit">Editar</button>
-        <button mat-stroked-button color="warn" (click)="deleteUser(user.id)">Eliminar</button>
+        <button mat-stroked-button color="warn" (click)="openDeleteUserDialog(user.id)">Eliminar</button>
       </mat-card-actions>
     </mat-card>
 

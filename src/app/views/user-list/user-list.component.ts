@@ -3,6 +3,7 @@ import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user.model'
 import { MatDialog } from '@angular/material/dialog';
 import { forkJoin } from 'rxjs';
+import { DialogDeleteUserComponent } from 'src/app/components/dialog-delete-user/dialog-delete-user.component';
 
 @Component({
   selector: 'app-user-list',
@@ -43,20 +44,11 @@ export class UserListComponent implements OnInit {
     window.location.reload();
   }
 
-  // openDeleteUserDialog() {
-  //   const dialogRef = this.dialog.open(DeleteUserDialog)
-  // }
+  openDeleteUserDialog(id: number): void {
+    const dialogRef = this.dialog.open(DialogDeleteUserComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      if(result === true) this.deleteUser(id)
+    })
+  }
 
 }
-
-// @Component({
-//   selector: 'delete-user-dialog',
-//   templateUrl: 'dialogs/delete-user-dialog.html',
-// })
-// export class DeleteUserDialog {}
-
-// @Component({
-//   selector: 'dialog-content-example-dialog',
-//   templateUrl: 'dialog-content-example-dialog.html',
-// })
-// export class DialogContentExampleDialog {}
