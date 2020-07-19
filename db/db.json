@@ -1,88 +1,56 @@
 {
   "users": [
     {
+      "nhc": "12345215",
       "name": "Andrea",
       "firstSurname": "del Vado",
       "secondSurname": "Puell",
       "gender": "Femenino",
-      "birthDate": "31-10-1996",
-      "idDocument": "01189877H",
-      "address": {
-        "street": "calle"
-      },
-      "nhc": "00121",
-      "id": 1
-    },
-    {
-      "name": "Enfermero",
-      "firstSurname": "De",
-      "secondSurname": "Primera",
-      "gender": "Femenino",
-      "birthDate": "",
+      "birthDate": "1996-10-30T23:00:00.000Z",
       "idDocument": "",
       "address": {
-        "street": "",
-        "number": "",
-        "door": "",
-        "postalCode": "",
-        "city": ""
-      },
-      "membershipNumber": "colegiado",
-      "profesionalType": "Enfermero",
-      "id": 3
-    },
-    {
-      "name": "Dario",
-      "firstSurname": "Gallegos",
-      "secondSurname": "Quishpe",
-      "gender": "Masculino",
-      "birthDate": "2020-07-06",
-      "idDocument": "01189877H",
-      "address": {
-        "street": "Calle el Toboso",
-        "number": "102",
-        "door": "Bajo A",
+        "street": "Calle Imaginaria",
+        "number": "18",
+        "door": "1 C",
         "postalCode": "28023",
         "city": "Madrid"
       },
-      "nhc": "123456789",
       "insuranceList": [
         {
-          "name": "Andrea del Vado Puell",
-          "cardNumber": "asd",
-          "insuranceType": "Dental"
+          "cardNumber": "12324587",
+          "name": "Asisa",
+          "insuranceType": "Salud"
         },
         {
-          "name": "Seguro 1",
-          "cardNumber": "asd",
+          "cardNumber": "0001124547",
+          "name": "Seguro publico",
           "insuranceType": "Familiar"
+        },
+        {
+          "cardNumber": "45879954",
+          "name": "Muface",
+          "insuranceType": "Dental"
         }
       ],
-      "id": 4
+      "id": 1
     },
     {
-      "nhc": "numero",
-      "name": "Paciente",
-      "firstSurname": "de",
-      "secondSurname": "Prueba",
+      "membershipNumber": "44457789",
+      "professionalType": "Médico",
+      "name": "Doctor",
+      "firstSurname": "De",
+      "secondSurname": "Primera",
       "gender": "",
-      "birthDate": "",
+      "birthDate": "1993-04-07T22:00:00.000Z",
       "idDocument": "",
       "address": {
-        "street": "",
-        "number": "",
+        "street": "Hospital",
+        "number": "8",
         "door": "",
-        "postalCode": "",
-        "city": ""
+        "postalCode": "28023",
+        "city": "Madrid"
       },
-      "insuranceList": [
-        {
-          "cardNumber": "Tarjeta",
-          "name": "Aseguradora",
-          "insuranceType": "salud"
-        }
-      ],
-      "id": 5
+      "id": 2
     }
   ]
 }
