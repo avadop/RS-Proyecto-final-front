@@ -4,7 +4,6 @@ import { User } from 'src/app/models/user.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatAccordion } from '@angular/material/expansion';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { MatGridTileHeaderCssMatStyler } from '@angular/material/grid-list';
 
 @Component({
   selector: 'app-edit-user',
@@ -116,7 +115,7 @@ export class EditUserComponent implements OnInit {
       door: this.user.address.door,
       postalCode: this.user.address.postalCode,
       city: this.user.address.city
-    })
+    });
   }
 
   saveAddress(): void {
@@ -138,7 +137,7 @@ export class EditUserComponent implements OnInit {
       cardNumber: this.user.insuranceList[i].cardNumber,
       name: this.user.insuranceList[i].name,
       insuranceType: this.user.insuranceList[i].insuranceType
-    })
+    });
 
     this.modifyingInsurance = true;
   }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
-import { NgForm, FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
-import { Insurance } from 'src/app/interfaces/insurance.type';
+import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 
@@ -55,7 +54,7 @@ export class NewUserComponent implements OnInit {
 
       insuranceList: this.formBuilder.array([])
 
-    })
+    });
   }
 
   addInsurance() {  
@@ -81,13 +80,11 @@ export class NewUserComponent implements OnInit {
       this.newUserForm.removeControl('professionalType');
     } else {
       this.newUserForm.removeControl('nhc');
-      this.newUserForm.removeControl('insuranceList')
+      this.newUserForm.removeControl('insuranceList');
     }
 
     this.userService.createUser(this.newUserForm.value)
-      .subscribe();
-
-    this.router.navigateByUrl('/users');
+      .subscribe( () => this.router.navigateByUrl('/users'));
   }
 
   switchIsPatient(value: boolean): void {
