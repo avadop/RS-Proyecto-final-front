@@ -65,7 +65,7 @@ export class EditUserComponent implements OnInit {
 
   saveNHC(): void {
     this.user.nhc = this.nhc;
-    this.userService.updateUser(this.user.id, this.user).subscribe();
+    this.userService.updateUser(this.user._id, this.user).subscribe();
     this.editingPatientData = false;
   }
 
@@ -79,7 +79,7 @@ export class EditUserComponent implements OnInit {
     this.user.membershipNumber = this.membershipNumber;
     this.user.professionalType = this.professionalType;
 
-    this.userService.updateUser(this.user.id, this.user).subscribe();
+    this.userService.updateUser(this.user._id, this.user).subscribe();
     this.editingProfessionalData = false;
   }
 
@@ -102,7 +102,7 @@ export class EditUserComponent implements OnInit {
     this.user.birthDate = this.birthDate;
     this.user.idDocument = this.idDocument;
 
-    this.userService.updateUser(this.user.id, this.user).subscribe();
+    this.userService.updateUser(this.user._id, this.user).subscribe();
 
     this.editingPersonalData = false;
   }
@@ -121,7 +121,7 @@ export class EditUserComponent implements OnInit {
   saveAddress(): void {
     this.user.address = this.addressForm.value;
 
-    this.userService.updateUser(this.user.id, this.user).subscribe();
+    this.userService.updateUser(this.user._id, this.user).subscribe();
     this.editingAddress = false;
   }
 
@@ -161,7 +161,7 @@ export class EditUserComponent implements OnInit {
       this.modifyingInsurance = false;
     }
     
-    this.userService.updateUser(this.user.id, this.user).subscribe();
+    this.userService.updateUser(this.user._id, this.user).subscribe();
   }
 
 }

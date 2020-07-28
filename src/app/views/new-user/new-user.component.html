@@ -113,19 +113,20 @@
       <mat-step *ngIf="isPatient">
         <ng-template matStepLabel>Aseguradoras</ng-template>
 
-        <button mat-button type="button" (click)="addInsurance()">Añadir seguro</button>
+        <button mat-stroked-button color="accent" type="button" (click)="addInsurance()">Añadir seguro</button>
 
         <mat-card class="insurance" formArrayName="insuranceList"
           *ngFor="let insurance of insuranceList.controls; let i = index">
           <div [formGroupName]="i">
-            <mat-form-field color="accent">
-              <mat-label>Número de tarjeta</mat-label>
-              <input matInput name="cardNumber" formControlName="cardNumber">
-            </mat-form-field>
 
             <mat-form-field color="accent">
               <mat-label>Nombre de aseguradora</mat-label>
               <input matInput name="name" formControlName="name">
+            </mat-form-field>
+
+            <mat-form-field color="accent">
+              <mat-label>Número de tarjeta</mat-label>
+              <input matInput name="cardNumber" formControlName="cardNumber">
             </mat-form-field>
 
             <mat-form-field color="accent">

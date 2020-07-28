@@ -39,7 +39,7 @@ export class UserListComponent implements OnInit {
   deleteAllDoctors(): void{
     forkJoin(this.users
       .filter(user => user.professionalType !== undefined && user.professionalType === 'Médico')
-      .map(user => this.userService.deleteUser(user.id)))
+      .map(user => this.userService.deleteUser(user._id)))
       .subscribe();
 
     window.location.reload();
