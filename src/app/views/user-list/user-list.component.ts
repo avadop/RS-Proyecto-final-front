@@ -31,7 +31,7 @@ export class UserListComponent implements OnInit {
     return 'membershipNumber' in user;
   }
 
-  deleteUser(id: number): void {
+  deleteUser(id: string): void {
     this.userService.deleteUser(id).subscribe();
     window.location.reload();
   }
@@ -45,7 +45,7 @@ export class UserListComponent implements OnInit {
     window.location.reload();
   }
 
-  openDeleteUserDialog(id: number): void {
+  openDeleteUserDialog(id: string): void {
     const dialogRef = this.dialog.open(DialogDeleteUserComponent);
     dialogRef.afterClosed().subscribe(result => {
       if(result) this.deleteUser(id);

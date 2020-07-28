@@ -2,7 +2,7 @@ import { Insurance } from '../interfaces/insurance.type';
 import { Address } from '../interfaces/address.type';
 
 export interface User {
-  id?: number; 
+  _id?: string; 
 
   nhc?: string; 
   insuranceList?: Insurance[];

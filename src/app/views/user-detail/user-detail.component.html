@@ -39,7 +39,7 @@
 
     <mat-tab *ngIf="isPatient" label="Aseguradoras">
       <div class="tab-content">
-        <h3 *ngIf="user.insuranceList.length === 0"> No hay ninguna aseguradora registrada para este paciente</h3>
+        <h3 class="title-no-insurance" *ngIf="user.insuranceList.length === 0"> No hay ninguna aseguradora registrada para este paciente</h3>
         <mat-card class="insurance" *ngFor="let insurance of user.insuranceList">
           <h2>{{insurance.name}}</h2>
           <p><span class="field-title">Número de tarjeta: </span> {{insurance.cardNumber}}</p>

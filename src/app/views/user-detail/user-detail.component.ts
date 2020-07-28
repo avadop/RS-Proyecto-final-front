@@ -24,9 +24,8 @@ export class UserDetailComponent implements OnInit {
         .subscribe(res => {
           this.user = res
           if('nhc' in this.user) this.isPatient = true;
-        }, error => {
-          if(error.status === 404)
-            this.router.navigate(['Error404'], {relativeTo: this.route})
+        }, () => {
+          this.router.navigate(['Error404'], {relativeTo: this.route})
         })
     });
   }
