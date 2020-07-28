@@ -23,7 +23,7 @@
         },
         {
           "cardNumber": "0001124547",
-          "name": "Seguro publico",
+          "name": "Seguridad social",
           "insuranceType": "Familiar"
         },
         {
@@ -36,11 +36,11 @@
     },
     {
       "membershipNumber": "44457789",
-      "professionalType": "Médico",
+      "professionalType": "Enfermero",
       "name": "Doctor",
       "firstSurname": "De",
       "secondSurname": "Primera",
-      "gender": "",
+      "gender": "Otro",
       "birthDate": "1993-04-07T22:00:00.000Z",
       "idDocument": "",
       "address": {
