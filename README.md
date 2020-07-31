@@ -3,6 +3,9 @@ Este repositorio consta con el Front-end del proyecto final realizado para el Bo
 
 Se trata de una aplicación pensada para el sector sanitario con la que se pueden gestionar una serie de usuarios, ya sean pacientes o profesionales del sector. Incluye las operaciones básicas CRUD más el añadido de poder borrar todos los médicos.
 
+### Back-end
+El back-end correspondiente a la aplicación se encuentra en: https://github.com/avadop/RS-Proyecto-final-back
+
 ## Tecnologías
 El proyecto ha sido realizado con [Angular CLI](https://github.com/angular/angular-cli) version 10.0.1 y, para la realización de esta primera parte, con [Json Server](https://github.com/typicode/json-server).
 
